@@ -1,0 +1,22 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "epav-password-reset",
+  "main": "src/index.mjs",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": true,
+  "preview_urls": false,
+  "observability": { "enabled": true, "head_sampling_rate": 1 },
+  "vars": {
+    "FIREBASE_PROJECT_ID": "epav-game",
+    "GMAIL_SENDER_EMAIL": "lucaslbr1a2b@gmail.com",
+    "GMAIL_SENDER_NAME": "Missão EPAV",
+    "ALLOWED_ORIGINS": "https://epav-game.github.io",
+    "RESET_URL": "https://epav-game.github.io/epav-admin/resetar-senha.html",
+    "TURNSTILE_HOSTNAMES": "epav-game.github.io"
+  },
+  "ratelimits": [
+    { "name": "IP_LIMIT", "namespace_id": "39356763555701", "simple": { "limit": 5, "period": 60 } },
+    { "name": "EMAIL_LIMIT", "namespace_id": "39356763555702", "simple": { "limit": 1, "period": 60 } },
+    { "name": "GLOBAL_LIMIT", "namespace_id": "39356763555703", "simple": { "limit": 30, "period": 60 } }
+  ]
+}

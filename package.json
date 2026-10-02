@@ -1,0 +1,14 @@
+{
+  "name": "epav-password-reset",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "test": "node --test tests/*.test.mjs",
+    "build": "wrangler deploy --dry-run",
+    "deploy": "wrangler deploy",
+    "configure:secrets": "node scripts/configure-secrets.mjs"
+  },
+  "devDependencies": { "wrangler": "4.146.0" }
+}

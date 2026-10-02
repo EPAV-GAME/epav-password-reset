@@ -1,0 +1,43 @@
+name: Publicar serviço de recuperação no Cloudflare
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: email-service
+  cancel-in-progress: false
+jobs:
+  verify:
+    name: Verificar serviço de e-mail
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+  deploy:
+    name: Publicar Worker
+    needs: verify
+    if: vars.CLOUDFLARE_ACCOUNT_ID != ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci
+      - name: Publicar no Cloudflare
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: npm run deploy
+      - name: Mostrar link do serviço
+        env:
+          SERVICE_URL: ${{ vars.PASSWORD_RESET_SERVICE_URL }}
+        run: |
+          printf '## Serviço de recuperação EPAV\n\n[Consultar serviço](%s/health)\n' "${SERVICE_URL%/}" >> "$GITHUB_STEP_SUMMARY"
