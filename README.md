@@ -6,7 +6,9 @@ Repositório independente: [EPAV-GAME/epav-password-reset](https://github.com/EP
 
 ## Estado atual
 
-Código preparado e verificações locais disponíveis. Ainda não publicado: faltam o acesso à conta Cloudflare escolhida, a senha de app do Gmail e as configurações de publicação. Nenhum envio real foi feito. Os testes de SMTP usam um servidor simulado.
+Publicado em [epav-password-reset.kevinernandes2012.workers.dev](https://epav-password-reset.kevinernandes2012.workers.dev/health), na conta Cloudflare de Kevin. Os segredos do Firebase e dos limites foram configurados. A ativação de envio ainda depende de `GMAIL_APP_PASSWORD`; a validação pública também depende de `TURNSTILE_SECRET_KEY`. Nenhum envio real foi feito. Os testes de SMTP usam um servidor simulado.
+
+O painel no GitHub Pages já recebeu a URL do serviço e a chave pública do widget Turnstile. A publicação automática do Worker continua pendente do token de API para o GitHub Actions; a primeira publicação foi feita com o perfil OAuth local `epav`.
 
 ## Fluxo
 
