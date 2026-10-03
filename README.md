@@ -6,9 +6,9 @@ Repositório independente: [EPAV-GAME/epav-password-reset](https://github.com/EP
 
 ## Estado atual
 
-Publicado em [epav-password-reset.kevinernandes2012.workers.dev](https://epav-password-reset.kevinernandes2012.workers.dev/health), na conta Cloudflare de Kevin. Os segredos do Firebase, dos limites e do Gmail foram configurados; `/health` retornou HTTP 200. A validação pública ainda depende de `TURNSTILE_SECRET_KEY`. Nenhum envio real foi feito. Os testes de SMTP usam um servidor simulado; o endpoint de saúde não confirma autenticação SMTP ou entrega de e-mail.
+Publicado em [epav-password-reset.kevinernandes2012.workers.dev](https://epav-password-reset.kevinernandes2012.workers.dev/health), na conta Cloudflare de Kevin. Os segredos do Firebase, dos limites, do Gmail e do Turnstile foram configurados; `/health` retornou HTTP 200. A rota pública rejeitou um token inválido com HTTP 403. Nenhum envio real foi feito. Os testes de SMTP usam um servidor simulado; o endpoint de saúde não confirma autenticação SMTP ou entrega de e-mail.
 
-O painel no GitHub Pages já recebeu a URL do serviço e a chave pública do widget Turnstile. A publicação automática do Worker continua pendente do token de API para o GitHub Actions; a primeira publicação foi feita com o perfil OAuth local `epav`.
+O painel e o jogo principal no GitHub Pages receberam a URL do serviço e a chave pública do widget Turnstile. A verificação do formulário do jogo foi confirmada no site publicado. A publicação automática do Worker continua pendente do token de API para o GitHub Actions; a primeira publicação foi feita com o perfil OAuth local `epav`.
 
 ## Fluxo
 
